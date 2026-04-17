@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_exam",
+  "version": "1.0.0",
+  "description": "Tree Shop exam project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
+  }
+}
