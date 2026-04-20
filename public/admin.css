@@ -1,0 +1,132 @@
+.admin-topbar {
+  min-height: 96px;
+  background-color: #f3f3f8 !important;
+  border-radius: 0;
+  box-shadow: none;
+  padding-left: 1.35rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+.admin-topbar .nav-link {
+  color: #4b4b5a;
+}
+
+.admin-left-actions .nav-link,
+.admin-right-actions .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-left-actions {
+  margin-right: auto;
+  gap: 0.5rem;
+}
+
+.admin-search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-search-btn {
+  background: transparent;
+  border: 0;
+}
+
+.admin-search-input {
+  width: 240px;
+  min-height: 40px;
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  border-color: #dddde6;
+  background-color: #fff;
+}
+
+.admin-search-input:focus {
+  border-color: #7367f0;
+  box-shadow: 0 0 0 0.15rem rgba(115, 103, 240, 0.16);
+}
+
+.admin-search-clear {
+  color: #6f6b7d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+.admin-topbar #navbar-collapse {
+  margin-left: 0 !important;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.admin-right-actions {
+  gap: 1rem;
+  margin-right: 0;
+}
+
+.admin-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 2rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-icon-btn:hover {
+  background-color: transparent;
+  color: #4b4b5a;
+}
+
+.admin-left-actions .nav-link i {
+  font-size: 2.1rem;
+}
+
+.admin-right-actions .nav-link i {
+  font-size: 2rem;
+}
+
+.admin-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  position: relative;
+}
+
+.admin-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-online-dot {
+  position: absolute;
+  right: -1px;
+  bottom: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #6dd13d;
+  border: 2px solid #fff;
+}
+
+.admin-notification-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff4b55;
+  border: 1px solid #f3f3f8;
+}

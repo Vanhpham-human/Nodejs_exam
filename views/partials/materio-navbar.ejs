@@ -1,0 +1,69 @@
+<nav
+  class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme admin-topbar"
+  id="layout-navbar">
+  <% const searchValue = typeof searchQuery !== "undefined" ? searchQuery : ""; %>
+  <div class="navbar-nav flex-row align-items-center admin-left-actions">
+    <a class="nav-item nav-link px-0 me-3" href="javascript:void(0)">
+      <i class="ri-menu-line ri-xl"></i>
+    </a>
+    <form action="/trees" method="GET" class="admin-search-form">
+      <button type="submit" class="nav-link admin-search-btn px-0">
+        <i class="ri-search-line ri-xl"></i>
+      </button>
+      <input
+        type="text"
+        name="q"
+        value="<%= searchValue %>"
+        class="form-control admin-search-input"
+        placeholder="Tim san pham..."
+        aria-label="Tim san pham" />
+      <% if (searchValue) { %>
+      <a href="/trees" class="admin-search-clear" title="Xoa tim kiem">
+        <i class="ri-close-line"></i>
+      </a>
+      <% } %>
+    </form>
+  </div>
+
+  <div class="navbar-nav-right d-flex align-items-center ms-auto" id="navbar-collapse">
+    <ul class="navbar-nav flex-row align-items-center admin-right-actions">
+      <li class="nav-item">
+        <a class="nav-link admin-icon-btn" href="javascript:void(0);"><i class="ri-translate-2"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link admin-icon-btn" href="javascript:void(0);"><i class="ri-sun-line"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link admin-icon-btn" href="javascript:void(0);"><i class="ri-star-line"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link admin-icon-btn position-relative" href="javascript:void(0);">
+          <i class="ri-notification-3-line"></i>
+          <span class="admin-notification-dot"></span>
+        </a>
+      </li>
+      <li class="nav-item navbar-dropdown dropdown-user dropdown">
+        <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+          <div class="avatar admin-avatar-wrap">
+            <img src="/materio-assets/img/avatars/1.png" alt="Admin" class="rounded-circle" />
+            <span class="admin-online-dot"></span>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
+          <li>
+            <a class="dropdown-item" href="/trees">
+              <i class="ri-list-check-3 me-2"></i>
+              <span>Danh sach san pham</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/about">
+              <i class="ri-information-line me-2"></i>
+              <span>Gioi thieu</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

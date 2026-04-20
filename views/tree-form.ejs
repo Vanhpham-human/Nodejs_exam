@@ -1,0 +1,133 @@
+<%- include("partials/materio-head", { title }) %>
+  <% const safeSearchQuery = typeof searchQuery !== "undefined" ? searchQuery : ""; %>
+  <body>
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <%- include("partials/materio-sidebar", { activePage }) %>
+
+        <div class="layout-page">
+          <%- include("partials/materio-navbar", { title, searchQuery: safeSearchQuery }) %>
+
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <% if (message) { %>
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <% } %>
+
+              <% if (error) { %>
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <% } %>
+
+              <div class="card mb-4">
+                <h5 class="card-header"><%= formHeading %></h5>
+                <div class="card-body">
+                  <p class="text-muted"><%= formDescription %></p>
+
+                  <form action="<%= action %>" method="POST">
+                    <div class="row g-6">
+                      <div class="col-md-6">
+                        <div class="form-floating form-floating-outline">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="treename"
+                            name="treename"
+                            value="<%= formData.treename %>"
+                            placeholder="Ten san pham"
+                            required />
+                          <label for="treename">Ten san pham</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating form-floating-outline">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="image"
+                            name="image"
+                            value="<%= formData.image || imageOptions[0] %>"
+                            placeholder="/provided-images/your-image.png"
+                            list="image-list" />
+                          <label for="image">Link hinh anh</label>
+                          <datalist id="image-list">
+                            <% imageOptions.forEach((img) => { %>
+                            <option value="<%= img %>"></option>
+                            <% }) %>
+                          </datalist>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="form-floating form-floating-outline">
+                          <textarea
+                            class="form-control h-px-120"
+                            id="description"
+                            name="description"
+                            placeholder="Mo ta san pham"
+                            required><%= formData.description %></textarea>
+                          <label for="description">Mo ta</label>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="card border">
+                          <div class="card-body d-flex align-items-center">
+                            <img
+                              src="<%= formData.image || imageOptions[0] %>"
+                              alt="preview"
+                              class="rounded me-4"
+                              id="preview-image"
+                              width="90"
+                              height="90"
+                              onerror="this.src='<%= imageOptions[1] %>'" />
+                            <div>
+                              <h6 class="mb-1">Preview hinh anh</h6>
+                              <p class="mb-0 text-muted">Nhap link vao o hinh anh de xem truoc.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-6 d-flex gap-2">
+                      <button type="submit" class="btn btn-primary"><%= submitLabel %></button>
+                      <a href="/trees" class="btn btn-outline-secondary">Quay lai danh sach</a>
+                    </div>
+                  </form>
+                  <% if (treeId) { %>
+                  <form
+                    action="/trees/<%= treeId %>/delete"
+                    method="POST"
+                    class="mt-2"
+                    onsubmit="return confirm('Ban co chac chan muon xoa san pham nay?');">
+                    <button type="submit" class="btn btn-outline-danger">Xoa san pham</button>
+                  </form>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <%- include("partials/materio-footer") %>
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+
+    <script>
+      const imageInput = document.getElementById("image");
+      const previewImage = document.getElementById("preview-image");
+
+      if (imageInput && previewImage) {
+        imageInput.addEventListener("input", () => {
+          previewImage.src = imageInput.value || "<%= imageOptions[0] %>";
+        });
+      }
+    </script>
+<%- include("partials/materio-scripts") %>
